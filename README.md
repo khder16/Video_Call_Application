@@ -16,6 +16,7 @@ The Video Chat App allows you to make video calls with other users by sending th
 ## Installation
 
 1- $ npm install
+
 2- $ npm start
 
 ## Usage
