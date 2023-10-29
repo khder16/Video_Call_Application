@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="video-grid"></div>
+
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+
+        </video>
+        <div id="controls" style=" position: fixed;
+         left: 30%;
+        right: 20px;">
+
+            <div class="mid-control ">
+                <span class="control-icon">
+                    <i class="fa fa-volume-up" id="off-volume"></i>
+                </span>
+                <span class="control-icon">
+                    <i class="fa fa-microphone" id="off-mic"></i>
+                </span>
+                <span class="control-icon">
+                    <i class="fa fa-video-camera" id="off-camera"></i>
+                </span>
+                <span class="control-icon" style="background: rgb(231, 20, 20); color: white;">
+                    <i class="fa fa-phone" id="cancel-call"></i>
+                </span>
+                <span class="control-icon"> <i onclick="copyLink()" class="fa fa-copy" id="off-camera"></i>
+                </span>
+
+
+                <span style="text-align: center;">
+                    <label for="link"
+                        style="display: block; margin-bottom: 5px; color: rgb(201, 193, 193); font-size:x-large; font-family:Sans-serif">Invitation
+                        Link</label>
+                    <textarea name="link" id="link"
+                        style="color: rgb(0, 0, 0); resize: none;width: 25rem ;height: 4.3rem  ; background-color: rgb(178 178 178); font-family:Arial; font-size: 18px;"
+                        readonly>http://localhost:3000/<%= roomId %></textarea>
+                </span>
+                <script>
+                    function copyLink() {
+                        var linkTextarea = document.getElementById("link");
+                        linkTextarea.select();
+                        document.execCommand("copy");
+
+                    }
+                </script>
+
+
+            </div>
+
+        </div>
+        <div class="self-video" id="self-video" style=" position: fixed;
+        top: 20px;
+        right: 20px;">
+            <video autoplay="true" id="videoSelfElement">
+            </video>
+            <span class="control-icon hide-video">
+                <i class="fa fa-eye" id="hide-video"></i>
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>
